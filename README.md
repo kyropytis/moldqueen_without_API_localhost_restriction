@@ -55,9 +55,8 @@
 It's one self-contained app — it owns the radio *and* serves the UI on-device, so no Pi or network is needed.
 Prefer to build it yourself? `cd android-core && ./gradlew installDebug` (over USB).
 
-**Also available on F-Droid:**
+**DOWNLOAD FROM RELEASE PAGE, NOT FDROID**
 
-<a href="https://f-droid.org/packages/io.github.jrichter24.moldqueen/"><img src="docs/assets/fdroid-badge.png" alt="Get it on F-Droid" width="200"></a>
 
 The **Raspberry Pi** path is in [Quickstart](#quickstart) below.
 
