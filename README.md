@@ -1,4 +1,4 @@
-<h1><img src="client/assets/moldqueen_icon.png" alt="" height="34" align="top"> moldqueen</h1>
+<h1><img src="client/assets/moldqueen_icon.png" alt="" height="34" align="top"> moldqueen with no API localhost lock</h1>
 
 <!-- Restrained, mostly-monochrome badge row: flat-square, dark-slate (labelColor=23272e / color=2f343b),
      white logos. One sparing accent (muted green 2d6a4f) on the status badge only. -->
