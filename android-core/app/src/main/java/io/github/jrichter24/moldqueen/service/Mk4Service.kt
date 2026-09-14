@@ -36,7 +36,7 @@ class Mk4Service(context: Context) {
 
     fun start() {
         if (wsServer == null) {
-            wsServer = Mk4WsServer(InetSocketAddress("127.0.0.1", WS_PORT), core).also {
+            wsServer = Mk4WsServer(InetSocketAddress("0.0.0.0", WS_PORT), core).also {
                 it.isReuseAddr = true
                 it.start()
             }
@@ -83,7 +83,7 @@ class Mk4Service(context: Context) {
         override fun adapterMac(): String? = null
         override fun hostname() = android.os.Build.MODEL ?: "android"
         override fun bluetoothd(): String? = null
-        override val hostBind = "127.0.0.1"
+        override val hostBind = "0.0.0.0"
         override fun paths() = JSONObject().put("files_dir", ctx.filesDir.absolutePath)
     }
 

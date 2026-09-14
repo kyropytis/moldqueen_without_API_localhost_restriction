@@ -22,7 +22,7 @@ class ClientHttpServer(
     private val assets: AssetManager,
     private val wsPort: Int,
     private val routes: ClientRoutes,
-) : NanoHTTPD("127.0.0.1", port) {
+) : NanoHTTPD("0.0.0.0", port) {
 
     override fun serve(session: IHTTPSession): Response {
         val path = session.uri ?: "/"

@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Permit cleartext HTTP only to loopback, so the WebView can load the locally-served
-     client (http://localhost:8080). All other cleartext stays blocked (default). -->
+<!-- Permit cleartext HTTP universally so the WebView can load the locally-served client 
+     and connect to remote WebSocket IPs (e.g. 192.168.x.x) on the local network. -->
 <network-security-config>
-    <domain-config cleartextTrafficPermitted="true">
-        <domain includeSubdomains="false">localhost</domain>
-        <domain includeSubdomains="false">127.0.0.1</domain>
-    </domain-config>
+    <base-config cleartextTrafficPermitted="true" />
 </network-security-config>
