@@ -1045,9 +1045,24 @@ window.MK4Chrome = (function () {
     function activePad() {
       const pads = navigator.getGamepads ? navigator.getGamepads() : [];
       const ok = p => !!p && p.connected !== false;
-      if (padIndex != null && ok(pads[padIndex])) return pads[padIndex];
-      for (let i = 0; i < pads.length; i++) if (ok(pads[i])) { padIndex = i; return pads[i]; }
-      padIndex = null; return null;
+      const valid = [];
+      for (let i = 0; i < pads.length; i++) if (ok(pads[i])) valid.push(pads[i]);
+      if (valid.length === 0) { padIndex = null; return null; }
+      if (valid.length === 1) { padIndex = valid[0].index; return valid[0]; }
+      
+      valid.sort((a, b) => a.id.localeCompare(b.id) || (a.index - b.index));
+      const merged = {
+        id: valid.map(p => p.id).join(" + "),
+        index: valid.map(p => p.index).join("+"),
+        axes: [],
+        buttons: []
+      };
+      for (const p of valid) {
+        for (let i = 0; i < p.axes.length; i++) merged.axes.push(p.axes[i]);
+        for (let i = 0; i < p.buttons.length; i++) merged.buttons.push(p.buttons[i]);
+      }
+      padIndex = valid[0].index;
+      return merged;
     }
     function padBtnObj(gp, i) { if (i == null) return null; return gp.buttons[i] || null; }
     function padPressed(gp, i) { const b = padBtnObj(gp, i); return !!b && (b.pressed || b.value > 0.5); }
